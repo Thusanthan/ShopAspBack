@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace ShopAspBack.Models
 {
-    public class StockDetail
+    public class SellEntryDetail
     {
-
         [Key]
         public int ItemId { get; set; }
         [Required]
@@ -20,11 +19,6 @@ namespace ShopAspBack.Models
         public int Quantity { get; set; }
         [Required]
         [Column(TypeName = "money")]
-        public decimal PurchasePrice { get; set; }
-        [Required]
-        [Column(TypeName = "money")]
-        public decimal SellingPrice { get; set; }
-
-
+        public int SellingPrice { get; set; }
     }
 }

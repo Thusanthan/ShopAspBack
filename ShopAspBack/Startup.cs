@@ -36,8 +36,10 @@ namespace ShopAspBack
 
                 }); 
 
-            services.AddDbContext<StockDetailContext>(options =>
+            services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+            
 
             services.AddCors();
         }

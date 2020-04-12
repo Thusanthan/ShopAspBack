@@ -11,56 +11,56 @@ namespace ShopAspBack.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StockDetailController : ControllerBase
+    public class SellEntryDetailController : ControllerBase
     {
         private readonly DatabaseContext _context;
 
-        public StockDetailController(DatabaseContext context)
+        public SellEntryDetailController(DatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: api/StockDetail
+        // GET: api/SellEntryDetail
         [HttpGet]
-        public IEnumerable<StockDetail> GetStockdetails()
+        public IEnumerable<SellEntryDetail> GetsellEntryDetails()
         {
-            return _context.StockDetails;
+            return _context.sellEntryDetails;
         }
 
-        // GET: api/StockDetail/5
+        // GET: api/SellEntryDetail/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetStockDetail([FromRoute] int id)
+        public async Task<IActionResult> GetSellEntryDetail([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var stockDetail = await _context.StockDetails.FindAsync(id);
+            var sellEntryDetail = await _context.sellEntryDetails.FindAsync(id);
 
-            if (stockDetail == null)
+            if (sellEntryDetail == null)
             {
                 return NotFound();
             }
 
-            return Ok(stockDetail);
+            return Ok(sellEntryDetail);
         }
 
-        // PUT: api/StockDetail/5
+        // PUT: api/SellEntryDetail/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStockDetail([FromRoute] int id, [FromBody] StockDetail stockDetail)
+        public async Task<IActionResult> PutSellEntryDetail([FromRoute] int id, [FromBody] SellEntryDetail sellEntryDetail)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != stockDetail.ItemId)
+            if (id != sellEntryDetail.ItemId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(stockDetail).State = EntityState.Modified;
+            _context.Entry(sellEntryDetail).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace ShopAspBack.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StockDetailExists(id))
+                if (!SellEntryDetailExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +81,45 @@ namespace ShopAspBack.Controllers
             return NoContent();
         }
 
-        // POST: api/StockDetail
+        // POST: api/SellEntryDetail
         [HttpPost]
-        public async Task<IActionResult> PostStockDetail([FromBody] StockDetail stockDetail)
+        public async Task<IActionResult> PostSellEntryDetail([FromBody] SellEntryDetail sellEntryDetail)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.StockDetails.Add(stockDetail);
+            _context.sellEntryDetails.Add(sellEntryDetail);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetStockDetail", new { id = stockDetail.ItemId }, stockDetail);
+            return CreatedAtAction("GetSellEntryDetail", new { id = sellEntryDetail.ItemId }, sellEntryDetail);
         }
 
-        // DELETE: api/StockDetail/5
+        // DELETE: api/SellEntryDetail/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStockDetail([FromRoute] int id)
+        public async Task<IActionResult> DeleteSellEntryDetail([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var stockDetail = await _context.StockDetails.FindAsync(id);
-            if (stockDetail == null)
+            var sellEntryDetail = await _context.sellEntryDetails.FindAsync(id);
+            if (sellEntryDetail == null)
             {
                 return NotFound();
             }
 
-            _context.StockDetails.Remove(stockDetail);
+            _context.sellEntryDetails.Remove(sellEntryDetail);
             await _context.SaveChangesAsync();
 
-            return Ok(stockDetail);
+            return Ok(sellEntryDetail);
         }
 
-        private bool StockDetailExists(int id)
+        private bool SellEntryDetailExists(int id)
         {
-            return _context.StockDetails.Any(e => e.ItemId == id);
+            return _context.sellEntryDetails.Any(e => e.ItemId == id);
         }
     }
 }

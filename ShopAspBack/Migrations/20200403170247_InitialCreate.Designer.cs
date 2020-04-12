@@ -8,7 +8,7 @@ using ShopAspBack.Models;
 
 namespace ShopAspBack.Migrations
 {
-    [DbContext(typeof(StockDetailContext))]
+    [DbContext(typeof(DatabaseContext))]
     [Migration("20200403170247_InitialCreate")]
     partial class InitialCreate
     {
