@@ -93,6 +93,9 @@ namespace ShopAspBack.Controllers
             _context.sellEntryDetails.Add(sellEntryDetail);
             await _context.SaveChangesAsync();
 
+            
+            
+
             return CreatedAtAction("GetSellEntryDetail", new { id = sellEntryDetail.ItemId }, sellEntryDetail);
         }
 

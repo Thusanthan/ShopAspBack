@@ -46,6 +46,7 @@ namespace ShopAspBack.Controllers
             return Ok(stockDetail);
         }
 
+
         // PUT: api/StockDetail/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStockDetail([FromRoute] int id, [FromBody] StockDetail stockDetail)
@@ -93,7 +94,9 @@ namespace ShopAspBack.Controllers
             _context.StockDetails.Add(stockDetail);
             await _context.SaveChangesAsync();
 
+            Console.WriteLine("Successfully Stock detail Entered");
             return CreatedAtAction("GetStockDetail", new { id = stockDetail.ItemId }, stockDetail);
+            
         }
 
         // DELETE: api/StockDetail/5
